@@ -21,12 +21,12 @@ public class ItemController {
     public Item create(@RequestBody Item i) { return repo.save(i); }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Item> get(@PathVariable Long id) {
+    public ResponseEntity<Item> get(@PathVariable("id") Long id) {
         return repo.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Item> update(@PathVariable Long id, @RequestBody Item body) {
+    public ResponseEntity<Item> update(@PathVariable("id") Long id, @RequestBody Item body) {
         return repo.findById(id).map(existing -> {
             existing.setName(body.getName());
             existing.setPrice(body.getPrice());
@@ -36,7 +36,7 @@ public class ItemController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         if (repo.existsById(id)) { repo.deleteById(id); return ResponseEntity.noContent().build(); }
         return ResponseEntity.notFound().build();
     }
