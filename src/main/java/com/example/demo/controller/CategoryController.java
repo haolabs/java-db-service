@@ -20,7 +20,7 @@ public class CategoryController {
     public Category create(@RequestBody Category c) { return repo.save(c); }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Category> get(@PathVariable Long id) {
-        return repo.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
-    }
+public ResponseEntity<Category> get(@PathVariable("id") Long id) {
+    return repo.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+}
 }
