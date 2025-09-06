@@ -54,5 +54,16 @@
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
     </plugins>
+          <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <configuration>
+        <release>21</release>
+        <compilerArgs>
+          <arg>-parameters</arg>
+        </compilerArgs>
+      </con>figuration>
+    </plugin>
+
   </build>
 </project>
